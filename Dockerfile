@@ -1,10 +1,13 @@
 FROM linkyard/docker-sbt
 
-RUN apt-get update && apt-get install apt-utils openssh-server lighttpd sudo -y
+RUN apt-get update && apt-get install apt-utils openssh-server lighttpd nodejs nodejs-legacy sudo -y
 
 RUN service ssh start
 EXPOSE 22
 EXPOSE 80
+
+COPY ./lighttpd.conf /etc/lighttpd/lighttpd.conf
+RUN service lighttpd start
 
 # Create Vagrant user
 RUN useradd -m vagrant -p k0eaf6alWzgNU
@@ -22,6 +25,8 @@ RUN echo "vagrant ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN echo 'PATH=/usr/local/sbt/bin:$PATH' >> /home/vagrant/.bashrc
 RUN echo 'cd /app' >> /home/vagrant/.bashrc
 
-RUN sudo -u vagrant /usr/local/sbt/bin/sbt
+COPY ./docker_start.sh /usr/sbin/startup.sh
+RUN chmod +x /usr/sbin/startup.sh
+#RUN sudo -u vagrant /usr/local/sbt/bin/sbt
 
-CMD ["/usr/sbin/sshd", "-D"]
+CMD "/usr/sbin/startup.sh"
