@@ -3,12 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Web Warrior</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-    <div id="text"></div>
-    <div id="options"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div id="text"></div>
+                <div id="arena">
+                    <table class="table">
+                        <tr><th></th><th>Skill</th><th>Stamina</th></tr>
+                    </table>
+                </div>
+                <div id="options"></div>
+            </div>
+            <div class="col-sm-4">
+                <table class="table">
+                    <tr>
+                        <td>Skill: (<span id="iskill"></span>) <span id="cskill"></spanid></td>
+                        <td>Stamina: (<span id="istamina"></span>) <span id="cstamina"></spanid></td>
+                        <td>Luck: (<span id="iluck"></span>) <span id="cluck"></spanid></td>
+                    </tr>
+                    <tr>
+                        <td>Gold: <span id="gold"></span></td>
+                        <td>Jewels: <span id="jewels"></span></td>
+                        <td>Provisions: <span id="provisions"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Potions: <span id="potions"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Equipment: <span id="items"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
 
     <script type="text/javascript" src="./js/web-warrior-jsdeps.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/web-warrior-fastopt.js"></script>
 </body>
 </html>
